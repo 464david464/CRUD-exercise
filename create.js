@@ -1,18 +1,19 @@
 const fs = require('fs');
-const cart = require('./read');
+const read = require('./read');
 
 function create(product) {
 
-    const newCart = [];
+    const cart = JSON.parse(read())
 
-    if(cart() != '') {
-        newCart.push(cart())
+    if(cart[0] == undefined) {
+        cart.push(product)
     }
-    newCart.push(product)
 
-    console.log(newCart);
+    cart.push(cart[0], product)
+    
+    console.log(cart);
 
-    fs.writeFileSync('./data/cart.json', (newCart))
+    // fs.writeFileSync('./data/cart.json', (cart))
 
 }
     module.exports = create;

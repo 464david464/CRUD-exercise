@@ -13,7 +13,7 @@ function create(product) {
     
     console.log(cart);
 
-    // fs.writeFileSync('./data/cart.json', (cart))
+    fs.writeFileSync('./data/cart.json', cart)
 
 }
     module.exports = create;

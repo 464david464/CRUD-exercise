@@ -2,9 +2,14 @@ const fs = require('fs');
 const cart = require('./read');
 
 function create(product) {
-    const newCart = [cart];
+    cart() // if cart === '', creating '[]'
+
+    const newCart = JSON.parse(cart());
     
     newCart.push(product)
+    fs.writeFileSync('./data/cart.json', JSON.stringify(newCart))
+    
+console.log(newCart);
 }
 
-module.exports = cart;
+module.exports = create;

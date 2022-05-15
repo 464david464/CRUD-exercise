@@ -1,5 +1,6 @@
 const readFn = require('./read');
 const createFN = require('./create')
+const fs = require("fs");
 
 const args = process.argv.slice(2);
 
@@ -8,11 +9,13 @@ const CUDproduct = args[1];
 
 const allowed = ["create", "read", "update", "delete"];
 
+
 if (args.length === 0) {
   throw new Error("you didn't choosed enything");
 } else if (!allowed.includes(operation)) {
   throw new Error(`the operation ${operation} in not CRUD`);
 }
+
 
 switch (operation) {
     case 'create':
@@ -20,6 +23,6 @@ switch (operation) {
         break;
 
     case 'read':
-        console.log(readFn());
+        console.log(JSON.parse(readFn()));
         break;
 }
